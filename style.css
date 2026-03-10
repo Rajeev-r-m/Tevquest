@@ -1,0 +1,543 @@
+/* Professional Light Theme Elements */
+:root {
+    --primary-navy: #0A192F;
+    /* Deep, professional blue */
+    --accent-blue: #0056b3;
+    /* Trustworthy corporate blue */
+    --accent-orange: #F2613F;
+    /* Professional, vibrant orange */
+    --bg-light: #F4F7F6;
+    /* Very subtle cool gray/white */
+    --surface-glass: rgba(255, 255, 255, 0.85);
+    /* Frosty white glass */
+    --surface-glass-hover: rgba(255, 255, 255, 0.95);
+    --border-glass: rgba(0, 31, 63, 0.1);
+    --text-main: #2D3748;
+    /* Dark slate for high readability */
+    --text-muted: #4A5568;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Three.js Canvas Container */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    /* Let clicks pass through to HTML */
+}
+
+/* Foreground Content */
+.overlay-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* Header & Scroll Animations */
+.glass-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    /* Larger padding initially */
+    background: rgba(255, 255, 255, 0.4);
+    /* Transparent initially */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid transparent;
+    z-index: 100;
+    transition: all 0.4s ease;
+    /* Smooth transition */
+}
+
+/* General Scrolled State (Transparent/Hidden) */
+.glass-header.nav-scrolled {
+    padding: 15px 50px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-glass);
+    box-shadow: none;
+    /* No shadow by default when scrolled down */
+    transform: translateY(-100%);
+    /* Hide when scrolled down */
+}
+
+/* State when scrolling UP (Showing, shadow, shrunk) */
+.glass-header.nav-scrolled.nav-up {
+    transform: translateY(0);
+    /* Drop back down securely */
+    padding: 10px 50px;
+    /* Shrink even further vertically */
+    box-shadow: 0 12px 30px rgba(10, 25, 47, 0.15), 0 4px 10px rgba(10, 25, 47, 0.1);
+}
+
+.brand-logo {
+    height: 45px;
+    object-fit: contain;
+    transition: height 0.4s ease;
+    /* In case the logo is white text, we might need a filter. If it's already dark, remove this */
+    /* filter: invert(1); */
+}
+
+/* Shrink logo deeply when scrolling up */
+.glass-header.nav-scrolled.nav-up .brand-logo {
+    height: 35px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--primary-navy);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a:hover {
+    color: var(--accent-orange);
+}
+
+.nav-separator {
+    color: var(--accent-orange);
+    margin: 0 20px;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.nav-arrow {
+    font-size: 0.6rem;
+    margin-left: 6px;
+    color: var(--primary-navy);
+}
+
+.nav-links a:hover .nav-arrow {
+    color: var(--accent-orange);
+}
+
+.nav-contact-btn {
+    background: #e24a1b;
+    /* Specific orange from the image */
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 4px;
+    margin-left: 30px;
+    font-weight: 700;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.nav-contact-btn:hover {
+    background: #c23912;
+    transform: translateY(-2px);
+}
+
+/* Shared Premium Glass Panel styling */
+.floating-panel,
+.glass-card,
+.service-card {
+    background: var(--surface-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 31, 63, 0.08);
+    /* Soft, premium shadow */
+    padding: 40px;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+    /* Ensure image doesn't bleed out */
+}
+
+.image-reveal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Background layer */
+}
+
+/* Dark overlay for text readability */
+.hero-overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.6);
+    z-index: 3;
+}
+
+.realistic-photo,
+.blueprint-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Blueprint CSS trick for an architectural paper feel */
+.blueprint-photo {
+    z-index: 2;
+    filter: sepia(0.8) hue-rotate(190deg) saturate(1) contrast(0.8) brightness(1.2);
+    /* No opacity limit so reveal looks solid initially */
+}
+
+.hero-text-centered {
+    position: relative;
+    z-index: 5;
+    /* Above background image and overlay */
+    text-align: center;
+    max-width: 900px;
+    padding: 0 30px;
+}
+
+.hero-text-centered h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.accent-text {
+    color: var(--accent-orange);
+}
+
+.hero-text-centered p {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 45px;
+    font-weight: 300;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--primary-navy);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(10, 25, 47, 0.2);
+}
+
+.primary-btn:hover {
+    background: var(--accent-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 86, 179, 0.3);
+}
+
+/* Hero Action Cards Footer */
+.hero-action-cards {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    z-index: 10;
+}
+
+.action-card {
+    background: rgba(10, 25, 47, 0.85);
+    /* Deep navy glass effect from image */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 180px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.action-card:hover {
+    transform: translateY(-10px);
+    background: rgba(10, 25, 47, 0.95);
+    border-color: var(--accent-orange);
+}
+
+.card-title-orange {
+    color: var(--accent-orange);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.card-title-white {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Metrics Section */
+.metrics-section {
+    padding: 100px 50px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.stat-item {
+    text-align: center;
+    min-width: 250px;
+    padding: 40px 20px;
+    transition: transform 0.3s ease;
+}
+
+.center-card {
+    border-bottom: 4px solid var(--accent-orange);
+    /* Subtle premium touch */
+}
+
+.stat-item .counter,
+.stat-item .stat-suffix {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+}
+
+.stat-item p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 10px;
+}
+
+/* Services Data Overlay */
+.services-section {
+    padding: 100px 50px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.4);
+    /* Slight offset for section grouping */
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    margin-bottom: 60px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card-container {
+    position: relative;
+    height: 350px;
+    perspective: 1000px;
+}
+
+.service-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 2;
+    position: relative;
+}
+
+.icon-placeholder {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-navy);
+    font-weight: 600;
+}
+
+.data-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: #ffffff;
+    border: 1px solid var(--border-glass);
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-card-container:hover .service-card {
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.service-card-container:hover .data-box {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    /* Reveal underneath smoothly */
+    z-index: 3;
+}
+
+.data-box h4 {
+    color: var(--accent-blue);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.prof-list {
+    list-style: none;
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.prof-list li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.prof-list li::before {
+    content: "•";
+    color: var(--accent-orange);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+/* About Founder */
+.about-founder {
+    padding: 100px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.founder-panel {
+    display: flex;
+    max-width: 900px;
+    gap: 40px;
+    align-items: center;
+    border-left: 6px solid var(--primary-navy);
+}
+
+.founder-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: top center;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.founder-content h3 {
+    font-size: 2rem;
+    color: var(--primary-navy);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.role-title {
+    color: var(--accent-blue);
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.bio-text {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 40px;
+    background: var(--primary-navy);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .main-hero-panel {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+    }
+
+    .metrics-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .founder-panel {
+        flex-direction: column;
+        text-align: center;
+    }
+}

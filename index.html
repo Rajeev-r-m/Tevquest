@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEV Quest - Techno-Economic Viability</title>
+    <!-- Fonts: Clean Sans-Serif for a premium, professional corporate look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 3D Canvas Background -->
+    <div id="canvas-container"></div>
+
+    <div class="overlay-content">
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="logo">
+                <!-- Assuming the logo looks good on light or has a dark version; setting a filter if needed in CSS -->
+                <img src="TEVQuest-Official-New-Logo.png" alt="TEVQuest Logo" class="brand-logo" />
+            </div>
+            <nav class="nav-links">
+                <a href="#home">HOME</a>
+                <span class="nav-separator">|</span>
+                <a href="#about">ABOUT TEVQUEST <span class="nav-arrow">▼</span></a>
+                <span class="nav-separator">|</span>
+                <a href="#practice">PRACTICE AREAS <span class="nav-arrow">▼</span></a>
+                <span class="nav-separator">|</span>
+                <a href="#news">NEWS & UPDATES</a>
+                <span class="nav-separator">|</span>
+                <a href="#careers">CAREERS</a>
+                <a href="#contact" class="nav-contact-btn">CONTACT US</a>
+            </nav>
+        </header>
+
+        <!-- 2. The Floating Hero Section (The "Blueprint Reveal") -->
+        <section id="home" class="hero-section">
+            <div class="image-reveal-container">
+                <div class="realistic-photo" style="background-image: url('HeroSection.png');"></div>
+                <!-- Blueprint filter overlay -->
+                <div class="blueprint-photo" style="background-image: url('HeroSection.png');"></div>
+                <!-- Dark overlay for text readability -->
+                <div class="hero-overlay-dark"></div>
+            </div>
+
+            <div class="hero-text-centered">
+                <h1>Translating Technical Plans into <br><span class="accent-text">Economic Reality.</span></h1>
+                <p>Premier Techno-Economic Viability & Valuation Consultancy</p>
+                <!-- <a href="#services" class="primary-btn">Consult with Er. Ashutosh Chandra</a> -->
+            </div>
+
+            <!-- New Action Cards Footer for Hero Section -->
+            <div class="hero-action-cards">
+                <a href="#who" class="action-card">
+                    <span class="card-title-orange">Who</span>
+                    <span class="card-title-white">We Are</span>
+                </a>
+                <a href="#what" class="action-card">
+                    <span class="card-title-orange">What</span>
+                    <span class="card-title-white">We Do</span>
+                </a>
+                <a href="#why" class="action-card">
+                    <span class="card-title-orange">Why</span>
+                    <span class="card-title-white">Choose Us</span>
+                </a>
+                <a href="#strength" class="action-card">
+                    <span class="card-title-orange">Our</span>
+                    <span class="card-title-white">Strength</span>
+                </a>
+                <a href="#goal" class="action-card">
+                    <span class="card-title-orange">Our</span>
+                    <span class="card-title-white">Goal</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 3. Professional "Trust Metrics" -->
+        <section id="metrics" class="metrics-section">
+            <div class="glass-card stat-item">
+                <span class="counter" data-target="30">0</span><span class="stat-suffix">+</span>
+                <p>Years of Engineering Excellence</p>
+            </div>
+            <div class="glass-card stat-item center-card">
+                <span class="counter" data-target="500">0</span><span class="stat-suffix">+</span>
+                <p>Industrial & Civil Projects</p>
+            </div>
+            <div class="glass-card stat-item">
+                <span class="counter" data-target="20">0</span><span class="stat-suffix">+</span>
+                <p>National Bank Empanelments</p>
+            </div>
+        </section>
+
+        <!-- 4. Interactive Services -->
+        <section id="services" class="services-section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="services-grid">
+
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="icon-placeholder">🏗️</div>
+                        <h3>Structural Design</h3>
+                    </div>
+                    <div class="data-box">
+                        <h4>Engineering Specs</h4>
+                        <ul class="prof-list">
+                            <li>Comprehensive Load Assessment</li>
+                            <li>High-Precision CAD Drafting</li>
+                            <li>Industrial Setup Architecture</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="icon-placeholder">📊</div>
+                        <h3>Asset Valuation</h3>
+                    </div>
+                    <div class="data-box">
+                        <h4>Valuation Metrics</h4>
+                        <ul class="prof-list">
+                            <li>CBDT Compliant Frameworks</li>
+                            <li>Tangible & Financial Assets</li>
+                            <li>Legal & Govt Processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card-container">
+                    <div class="service-card">
+                        <div class="icon-placeholder">⚙️</div>
+                        <h3>TEV & Govt. Consulting</h3>
+                    </div>
+                    <div class="data-box">
+                        <h4>Consultancy Scope</h4>
+                        <ul class="prof-list">
+                            <li>INVEST-UP Industrial Verticals</li>
+                            <li>Regulatory Compliance Checks</li>
+                            <li>Economic Feasibility Modelling</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Founder Panel -->
+        <section class="about-founder">
+            <div class="glass-card founder-panel">
+                <div class="founder-img" style="background-image: url('Ashutosh_image.png');"></div>
+                <div class="founder-content">
+                    <h3>Er. Ashutosh Chandra</h3>
+                    <p class="role-title">CBDT Approved Valuer & Chairman, ACE Gorakhpur</p>
+                    <p class="bio-text">A distinguished civil engineer with over three decades of professional practice.
+                        Specializing in high-stakes property valuation, robust structural engineering, and comprehensive
+                        industrial project verification. Dedicated to meticulous planning, strict regulatory adherence,
+                        and timely project delivery.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 TEVQuest & Avi Consultant. Promoting Engineering & Valuation Excellence.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

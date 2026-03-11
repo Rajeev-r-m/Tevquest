@@ -26,6 +26,7 @@
         <header class="glass-header">
             <div class="logo">
                 <!-- Assuming the logo looks good on light or has a dark version; setting a filter if needed in CSS -->
+
                 <img src="TEVQuest-Official-New-Logo.png" alt="TEVQuest Logo" class="brand-logo" />
             </div>
             <nav class="nav-links">
@@ -44,10 +45,14 @@
 
         <!-- 2. The Floating Hero Section (The "Blueprint Reveal") -->
         <section id="home" class="hero-section">
-            <div class="image-reveal-container">
-                <div class="realistic-photo" style="background-image: url('HeroSection.png');"></div>
-                <!-- Blueprint filter overlay -->
-                <div class="blueprint-photo" style="background-image: url('HeroSection.png');"></div>
+
+
+            <div class="video-reveal-container">
+                <div class="video-wrapper">
+                    <iframe id="hero-video-player"
+                        src="https://www.youtube.com/embed/l6EzZafb1Pk?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=gW22hVe5_fI,l6EzZafb1Pk&controls=0&start=20&end=28"
+                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
                 <!-- Dark overlay for text readability -->
                 <div class="hero-overlay-dark"></div>
             </div>

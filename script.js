@@ -139,6 +139,22 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.5
     });
 
+    // Animate Hero Text (Using Timeline for exact control)
+    const heroTl = gsap.timeline({ delay: 0.5 });
+
+    heroTl.from(".hero-text-centered h1", {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out"
+    })
+        .from(".hero-text-centered p", {
+            y: 30,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out"
+        }, "-=0.8"); // Start 0.8s before the h1 animation finishes
+
     // Blend and Move the Hero Image while Scrolling Down
     gsap.to(".image-reveal-container", {
         y: 100, // Move down slightly slower than the scroll speed for parallax
